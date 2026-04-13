@@ -1,0 +1,118 @@
+{
+  "theme": "Light",
+  "archetype": "1 (Organic & Earthy / Soft Minimalist)",
+  "vibe": "Clean minimal yet aesthetic design. Pleasant to eyes. Soft, refined, and calming. No neo-brutalist elements, no thick borders, no hard shadows.",
+  "colors": {
+    "background": "hsl(60, 20%, 99%)",
+    "foreground": "hsl(160, 5%, 15%)",
+    "card": "hsl(0, 0%, 100%)",
+    "card_foreground": "hsl(160, 5%, 15%)",
+    "popover": "hsl(0, 0%, 100%)",
+    "popover_foreground": "hsl(160, 5%, 15%)",
+    "primary": "hsl(142, 16%, 45%)",
+    "primary_foreground": "hsl(0, 0%, 100%)",
+    "secondary": "hsl(142, 10%, 96%)",
+    "secondary_foreground": "hsl(142, 16%, 35%)",
+    "muted": "hsl(160, 10%, 96%)",
+    "muted_foreground": "hsl(160, 5%, 45%)",
+    "accent": "hsl(60, 20%, 94%)",
+    "accent_foreground": "hsl(160, 5%, 15%)",
+    "destructive": "hsl(0, 84%, 60%)",
+    "destructive_foreground": "hsl(0, 0%, 100%)",
+    "border": "hsl(160, 10%, 92%)",
+    "input": "hsl(160, 10%, 92%)",
+    "ring": "hsl(142, 16%, 45%)",
+    "radius": "1rem"
+  },
+  "typography": {
+    "headings": {
+      "family": "Outfit, sans-serif",
+      "weight": "font-medium",
+      "tracking": "tracking-tight",
+      "color": "text-foreground"
+    },
+    "body": {
+      "family": "Figtree, sans-serif",
+      "weight": "font-normal",
+      "leading": "leading-relaxed",
+      "color": "text-muted-foreground"
+    },
+    "hierarchy_rules": {
+      "h1": "text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight",
+      "h2": "text-2xl sm:text-3xl font-medium tracking-tight",
+      "h3": "text-xl sm:text-2xl font-medium",
+      "label": "text-xs font-medium tracking-widest uppercase text-muted-foreground",
+      "body": "text-sm sm:text-base text-muted-foreground"
+    }
+  },
+  "layout_and_spacing": {
+    "philosophy": "Generous spacing. Let elements breathe. Use negative space to separate content rather than harsh borders.",
+    "container_padding": "p-8 md:p-12",
+    "gap_strategy": "gap-6 md:gap-8",
+    "card_padding": "p-6 md:p-8"
+  },
+  "surfaces_and_borders": {
+    "cards": "bg-white rounded-2xl border border-border/40 shadow-[0_8px_30px_rgb(0,0,0,0.03)]",
+    "inputs": "bg-white rounded-xl border border-border/50 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm",
+    "buttons": "rounded-xl font-medium transition-all active:scale-[0.98]",
+    "dialogs": "bg-white rounded-3xl border-none shadow-[0_20px_40px_rgb(0,0,0,0.08)] p-6"
+  },
+  "components_instructions": {
+    "buttons": "Soft, rounded-xl, no hard shadows. Primary button should be the soft sage primary color. Use secondary buttons with very faint backgrounds (secondary color) and dark text.",
+    "inputs": "Clean, slight inner shadow or just a very faint border. On focus, a soft glow (ring) in primary color.",
+    "task_status": {
+      "todo": "bg-slate-50 text-slate-500 border border-slate-100",
+      "in_progress": "bg-amber-50 text-amber-600 border border-amber-100",
+      "done": "bg-emerald-50 text-emerald-600 border border-emerald-100"
+    },
+    "task_priority": {
+      "low": "text-slate-400 bg-slate-50 px-2 py-1 rounded-md text-xs",
+      "medium": "text-blue-500 bg-blue-50 px-2 py-1 rounded-md text-xs",
+      "high": "text-orange-500 bg-orange-50 px-2 py-1 rounded-md text-xs",
+      "urgent": "text-red-500 bg-red-50 px-2 py-1 rounded-md text-xs"
+    },
+    "dialogs": "Use Shadcn Dialog but override the border-radius to 3xl and remove any thick borders. Ensure backdrop is a soft blur (backdrop-blur-sm bg-black/10).",
+    "dropdowns": "Shadcn DropdownMenu, rounded-xl, soft shadow, faint borders."
+  },
+  "views": {
+    "login_register": {
+      "layout": "Split screen layout. Left side: Centered form with massive negative space, soft typography. Right side: A pure CSS soft mesh gradient background using primary (sage) and accent (warm pearl) colors, smoothly animating. No external images to keep it perfectly clean and fast.",
+      "form": "Cards are completely borderless, inputs are spacious."
+    },
+    "projects_list": {
+      "layout": "Bento-style grid (grid-cols-1 md:grid-cols-2 lg:grid-cols-3). Cards should have soft hover states (slight lift -translate-y-1, increased soft shadow).",
+      "header": "Clean header with 'Projects' h1 and a soft primary button 'New Project' on the right."
+    },
+    "project_detail": {
+      "layout": "Top section: Project title, description, and stats. Bottom section: Task list.",
+      "tasks_view": "Clean vertical list of tasks. Each task row is a soft rounded-xl card with pure white bg, very subtle border. Hovering over a task row subtly highlights it. Use clear, aesthetic badges for status and priority.",
+      "actions": "Assignee avatars can be simple pure CSS circles with initials and soft pastel backgrounds."
+    }
+  },
+  "icons": {
+    "library": "lucide-react",
+    "stroke_width": "1.5",
+    "style": "Minimalist, thin strokes."
+  },
+  "motion": {
+    "hover": "transition-all duration-300 ease-out",
+    "click": "active:scale-[0.98]",
+    "page_transition": "Simple opacity fade-in (framer-motion opacity: 0 -> 1, y: 10 -> 0)."
+  },
+  "accessibility_and_testing": {
+    "contrast": "Ensure text-muted-foreground has at least 4.5:1 contrast against bg-background.",
+    "testing": "All interactive elements MUST include data-testid attributes (e.g., data-testid='login-submit-button', data-testid='create-task-button')."
+  },
+  "media": {
+    "images": {
+      "note": "Image generation and search APIs failed. The design MUST rely purely on CSS for visual aesthetics. Use soft CSS mesh gradients, subtle borders, and generous padding. Do NOT use placeholder image URLs like via.placeholder.com."
+    }
+  },
+  "tech_stack": [
+    "React",
+    "Tailwind CSS",
+    "Shadcn UI",
+    "Lucide React",
+    "Framer Motion"
+  ]
+}
