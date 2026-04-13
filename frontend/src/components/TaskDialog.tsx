@@ -82,43 +82,73 @@ export function TaskDialog({ open, onOpenChange, projectId, task, users, onSaved
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
+      <DialogContent data-testid="task-dialog">
         <DialogHeader>
           <DialogTitle>{task ? 'Edit task' : 'New task'}</DialogTitle>
           <DialogDescription>
-            {task ? 'Update task details.' : 'Add a new task to this project.'}
+            {task ? 'Tweak what needs to change and save.' : 'Add a task to move the project forward.'}
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={onSubmit} className="space-y-4" noValidate>
-          <div className="space-y-1.5">
+        <form onSubmit={onSubmit} className="space-y-5" noValidate>
+          <div className="space-y-2">
             <Label htmlFor="task-title">Title</Label>
-            <Input id="task-title" value={title} onChange={(e) => setTitle(e.target.value)} disabled={submitting} />
+            <Input
+              id="task-title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              disabled={submitting}
+              data-testid="task-title-input"
+            />
             {fieldErrors.title && <p className="text-sm text-destructive">{fieldErrors.title}</p>}
           </div>
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             <Label htmlFor="task-description">Description</Label>
-            <Textarea id="task-description" value={description} onChange={(e) => setDescription(e.target.value)} disabled={submitting} />
+            <Textarea
+              id="task-description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              disabled={submitting}
+              data-testid="task-description-input"
+            />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="space-y-2">
               <Label htmlFor="task-status">Status</Label>
-              <Select id="task-status" value={status} onChange={(e) => setStatus(e.target.value as TaskStatus)} disabled={submitting}>
+              <Select
+                id="task-status"
+                value={status}
+                onChange={(e) => setStatus(e.target.value as TaskStatus)}
+                disabled={submitting}
+                data-testid="task-status-input"
+              >
                 <option value="todo">To do</option>
                 <option value="in_progress">In progress</option>
                 <option value="done">Done</option>
               </Select>
             </div>
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <Label htmlFor="task-priority">Priority</Label>
-              <Select id="task-priority" value={priority} onChange={(e) => setPriority(e.target.value as TaskPriority)} disabled={submitting}>
+              <Select
+                id="task-priority"
+                value={priority}
+                onChange={(e) => setPriority(e.target.value as TaskPriority)}
+                disabled={submitting}
+                data-testid="task-priority-input"
+              >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
               </Select>
             </div>
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <Label htmlFor="task-assignee">Assignee</Label>
-              <Select id="task-assignee" value={assigneeId} onChange={(e) => setAssigneeId(e.target.value)} disabled={submitting}>
+              <Select
+                id="task-assignee"
+                value={assigneeId}
+                onChange={(e) => setAssigneeId(e.target.value)}
+                disabled={submitting}
+                data-testid="task-assignee-input"
+              >
                 <option value="">Unassigned</option>
                 {users.map((u) => (
                   <option key={u.id} value={u.id}>{u.name}</option>
@@ -126,7 +156,7 @@ export function TaskDialog({ open, onOpenChange, projectId, task, users, onSaved
               </Select>
               {fieldErrors.assignee_id && <p className="text-sm text-destructive">{fieldErrors.assignee_id}</p>}
             </div>
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <Label htmlFor="task-due">Due date</Label>
               <Input
                 id="task-due"
@@ -134,12 +164,13 @@ export function TaskDialog({ open, onOpenChange, projectId, task, users, onSaved
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
                 disabled={submitting}
+                data-testid="task-due-input"
               />
               {fieldErrors.due_date && <p className="text-sm text-destructive">{fieldErrors.due_date}</p>}
             </div>
           </div>
           {error && (
-            <div className="rounded-md bg-destructive/10 border border-destructive/20 p-2 text-sm text-destructive">
+            <div className="rounded-xl bg-destructive/5 border border-destructive/20 p-3 text-sm text-destructive">
               {error}
             </div>
           )}
@@ -147,7 +178,7 @@ export function TaskDialog({ open, onOpenChange, projectId, task, users, onSaved
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)} disabled={submitting}>
               Cancel
             </Button>
-            <Button type="submit" disabled={submitting}>
+            <Button type="submit" disabled={submitting} data-testid="task-submit-button">
               {submitting ? 'Saving…' : task ? 'Save changes' : 'Create task'}
             </Button>
           </DialogFooter>

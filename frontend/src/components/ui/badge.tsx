@@ -1,29 +1,61 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-const variantClasses: Record<string, string> = {
-  default: 'bg-primary/10 text-primary border-primary/20',
-  todo: 'bg-slate-100 text-slate-700 border-slate-200',
-  in_progress: 'bg-amber-100 text-amber-800 border-amber-200',
-  done: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-  low: 'bg-slate-100 text-slate-600 border-slate-200',
-  medium: 'bg-blue-100 text-blue-800 border-blue-200',
-  high: 'bg-red-100 text-red-800 border-red-200',
+export type BadgeVariant =
+  | 'default'
+  | 'todo' | 'in_progress' | 'done'
+  | 'low' | 'medium' | 'high';
+
+const variantClasses: Record<BadgeVariant, string> = {
+  default: 'bg-accent text-accent-foreground border-border/50',
+  // status
+  todo: 'bg-slate-50 text-slate-500 border-slate-100',
+  in_progress: 'bg-amber-50 text-amber-600 border-amber-100',
+  done: 'bg-emerald-50 text-emerald-600 border-emerald-100',
+  // priority — rendered as subtle rounded-md chips elsewhere; kept here for fallback
+  low: 'bg-slate-50 text-slate-400 border-slate-100',
+  medium: 'bg-blue-50 text-blue-500 border-blue-100',
+  high: 'bg-orange-50 text-orange-500 border-orange-100',
 };
 
 export function Badge({
   variant = 'default',
   className,
   ...props
-}: React.HTMLAttributes<HTMLSpanElement> & { variant?: keyof typeof variantClasses }) {
+}: React.HTMLAttributes<HTMLSpanElement> & { variant?: BadgeVariant }) {
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold',
+        'inline-flex items-center rounded-full border px-3 py-0.5 text-xs font-medium',
         variantClasses[variant],
         className
       )}
       {...props}
     />
+  );
+}
+
+export function PriorityChip({
+  priority,
+  className,
+}: {
+  priority: 'low' | 'medium' | 'high';
+  className?: string;
+}) {
+  const map: Record<string, string> = {
+    low: 'text-slate-400 bg-slate-50',
+    medium: 'text-blue-500 bg-blue-50',
+    high: 'text-orange-500 bg-orange-50',
+  };
+  return (
+    <span
+      className={cn(
+        'inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium capitalize',
+        map[priority],
+        className
+      )}
+    >
+      {priority}
+    </span>
   );
 }
